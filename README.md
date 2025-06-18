@@ -20,46 +20,49 @@ A modern, responsive project management dashboard built with **Next.js 14**, **T
 ## 📸 Screenshots
 
 ### 🏠 Dashboard Overview
-![Dashboard Overview](/screenshots/dashboard-overview.png)
-*Main dashboard with project statistics, charts, and key metrics*
 
-### 🌙 Dark Mode Interface
-![Dark Mode](/screenshots/dark-mode.png)
-*Complete dark theme with all components and navigation*
-
-### 📱 Mobile Responsive Design
-![Mobile View](/public/screenshots/responsive-dashboard.png)
-![](/public/screenshots/responsive-project.png)
-*Fully responsive design optimized for mobile devices*
+![Dashboard Overview](/public/screenshots/dashboard-light.png)
+_Main dashboard with project statistics, charts, and key metrics_
 
 ### 📋 Projects Management
+
 ![Projects Page](/public/screenshots/project-light.png)
-![](/public/screenshots/project-dark.png)
-*Project listing with filtering, sorting, and management features*
+_Project listing with filtering, sorting, and management features_
 
 ### 📊 Project Details & Tasks
+
 ![Project Details](/public/screenshots/projectDetails-light.png)
-![](/public/screenshots/projectDetails-dark.png)
-*Detailed project view with task management and progress tracking*
+_Detailed project view with task management and progress tracking_
 
 ### 👥 Team Management
+
 ![Teams Page](/public/screenshots/teams-light.png)
-![](/public/screenshots/teams-dark.png)
-*Team overview with member management and collaboration features*
+_Team overview with member management and collaboration features_
 
 ### ⚙️ Settings & Configuration
+
 ![Settings Page](/public/screenshots/settings-light.png)
-![](/public/screenshots/settings-dark.png)
-*Application settings and user preferences*
+_Application settings and user preferences_
 
 ### 🔐 Authentication
-![Login Page](/public/screenshots/loginpage.png)
-*Secure login interface with modern design*
 
-### 📈 Analytics & Reports
-![Analytics Dashboard](/public/screenshots/dashboard-light.png)
-![](/public/screenshots/dashboard-dark.png)
-*Advanced analytics with interactive charts and data visualization*
+![Login Page](/public/screenshots/loginpage.png)
+_Secure login interface with modern design_
+
+### 🌙 Dark Mode Interface
+
+![Dark Mode Dashboard](/public/screenshots/dashboard-dark.png)
+![Dark Mode Project](/public/screenshots/project-dark.png)
+![Dark Mode Project-Details](/public/screenshots/projectDetails-dark.png)
+![Dark Mode Teams](/public/screenshots/team-dark.png)
+![Dark Mode Settings](/public/screenshots/settings-dark.png)
+_Complete dark theme with all components and navigation_
+
+### 📱 Mobile Responsive Design
+
+![Mobile View](/public/screenshots/responsive-dashboard.png)
+![](/public/screenshots/responsive-project.png)
+_Fully responsive design optimized for mobile devices_
 
 ---
 
@@ -78,17 +81,20 @@ A modern, responsive project management dashboard built with **Next.js 14**, **T
 ## 📦 Installation & Setup
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/Parivesh09/fincoopers-task
 cd fincoopers-task
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Run the development server
+
 ```bash
 npm run dev
 ```
@@ -96,13 +102,16 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ### 4. Build for production
+
 ```bash
 npm run build
 npm start
 ```
 
 ### 5. Environment Variables(optional if you are connecting to backend)
+
 Create a `.env.local` file for environment-specific configurations:
+
 ```env
 NEXT_PUBLIC_API_URL=your-api-url
 ```
@@ -155,12 +164,14 @@ project-management-dashboard/
 ## 🎨 Theme System Deep Dive
 
 ### **How It Works**
+
 - **CSS Variables** are defined in `globals.css` under `:root` (light) and `.dark` (dark mode).
 - **Custom utility classes** (e.g., `.bg-background`, `.text-foreground`, `.border-border`) use these variables for consistent theming.
 - **ThemeProvider** manages the current theme, syncs with system preference, and persists user choice in localStorage.
 - **All components** use semantic classes (not hardcoded colors) for full theme support.
 
 ### **Example: Using Theme Variables in CSS**
+
 ```css
 .my-element {
   background-color: hsl(var(--background));
@@ -170,24 +181,33 @@ project-management-dashboard/
 ```
 
 ### **Example: Custom Utility Class**
+
 ```css
-.bg-background { background-color: hsl(var(--background)) !important; }
-.text-foreground { color: hsl(var(--foreground)) !important; }
-.border-border { border-color: hsl(var(--border)) !important; }
+.bg-background {
+  background-color: hsl(var(--background)) !important;
+}
+.text-foreground {
+  color: hsl(var(--foreground)) !important;
+}
+.border-border {
+  border-color: hsl(var(--border)) !important;
+}
 ```
 
 ### **Why `!important`?**
+
 This ensures our custom utilities override any conflicting Tailwind classes.
 
 ### **Switching Themes in Code**
+
 ```tsx
-import { useTheme } from '@/components/providers/ThemeProvider';
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 function ThemeToggle() {
   const { theme, toggleTheme, isDark } = useTheme();
   return (
     <button onClick={toggleTheme}>
-      Switch to {isDark ? 'light' : 'dark'} mode
+      Switch to {isDark ? "light" : "dark"} mode
     </button>
   );
 }
@@ -198,6 +218,7 @@ function ThemeToggle() {
 ## 🧩 Component Usage Examples
 
 ### **Card Component**
+
 ```tsx
 import { Card } from '@/components/ui/Card';
 <Card title="Total Projects" value="12" />
@@ -205,20 +226,28 @@ import { Card } from '@/components/ui/Card';
 ```
 
 ### **Modal Component**
+
 ```tsx
-import Modal from '@/components/ui/Modal';
-<Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Add Project" size="lg">
+import Modal from "@/components/ui/Modal";
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Add Project"
+  size="lg"
+>
   <p>Modal content goes here</p>
-</Modal>
+</Modal>;
 ```
 
 ### **Sidebar with Theme Toggle**
+
 ```tsx
-import Sidebar from '@/components/layout/Sidebar';
-<Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+import Sidebar from "@/components/layout/Sidebar";
+<Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />;
 ```
 
 ### **Dashboard Page**
+
 ```tsx
 export default function DashboardPage() {
   return (
@@ -239,9 +268,10 @@ export default function DashboardPage() {
 - **src/lib/store.ts** sets up the Redux store and app slice (projects, user, theme, etc.).
 - Use `useAppSelector` and `useAppDispatch` hooks for typed access to state and dispatch.
 - Example:
+
 ```tsx
-import { useAppSelector, useAppDispatch } from '@/lib/store';
-const projects = useAppSelector(state => state.app.projects);
+import { useAppSelector, useAppDispatch } from "@/lib/store";
+const projects = useAppSelector((state) => state.app.projects);
 const dispatch = useAppDispatch();
 ```
 
@@ -250,17 +280,20 @@ const dispatch = useAppDispatch();
 ## 🧑‍💻 Extending the App
 
 ### **Adding a New Page**
+
 1. Create a new folder in `src/app/` (e.g., `src/app/reports/`).
 2. Add a `page.tsx` file for the new route.
 3. Use the existing layout and theme system.
 
 ### **Adding a New Theme Color**
+
 1. Add a new CSS variable in `:root` and `.dark` in `globals.css`.
 2. Add the color to `tailwind.config.js` under `theme.extend.colors`.
 3. Create a utility class in `@layer utilities` in `globals.css`.
 4. Use the new class in your components.
 
 ### **Adding a New Component**
+
 1. Create the component in `src/components/ui/` or another appropriate folder.
 2. Use semantic color classes (e.g., `bg-card`, `text-foreground`).
 3. Add TypeScript types and props.
