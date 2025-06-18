@@ -33,8 +33,8 @@ A modern, responsive project management dashboard built with **Next.js 14**, **T
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd project-management-dashboard
+git clone https://github.com/Parivesh09/fincoopers-task
+cd fincoopers-task
 ```
 
 ### 2. Install dependencies
