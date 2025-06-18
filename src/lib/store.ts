@@ -35,6 +35,9 @@ const appSlice = createSlice({
     setCurrentUser: (state, action: PayloadAction<AppState['currentUser']>) => {
       state.currentUser = action.payload;
     },
+    logout: (state) => {
+      state.currentUser = null;
+    },
     toggleTheme: (state) => {
       state.theme.mode = state.theme.mode === 'light' ? 'dark' : 'light';
     },
@@ -56,6 +59,7 @@ export const {
   updateProject,
   deleteProject,
   setCurrentUser,
+  logout,
   toggleTheme,
   setTheme,
   setLoading,

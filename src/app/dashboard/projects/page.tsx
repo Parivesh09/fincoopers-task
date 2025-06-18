@@ -31,7 +31,7 @@ export default function ProjectsPage() {
       title: newProjectTitle,
       description: newProjectDescription,
       status: 'todo',
-      assignedMembers: [], // Assign members later or in a dedicated form
+      assignedMembers: [],
       tasks: [],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

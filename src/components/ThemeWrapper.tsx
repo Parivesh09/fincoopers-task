@@ -9,7 +9,6 @@ interface ThemeWrapperProps {
 export function ThemeWrapper({ children }: ThemeWrapperProps) {
   const { mounted } = useTheme();
 
-  // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
     return (
       <div className="min-h-screen bg-background">

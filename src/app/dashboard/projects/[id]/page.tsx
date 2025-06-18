@@ -43,7 +43,6 @@ export default function ProjectDetailsPage() {
 
   useEffect(() => {
     if (!currentProject) {
-      // Redirect or show error if project not found
       return;
     }
   }, [currentProject]);
@@ -58,7 +57,6 @@ export default function ProjectDetailsPage() {
 
   const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
-    // currentProject is guaranteed to be defined here due to the early return above
 
     const assignedUser = mockUsers.find(
       (user) => user.id === taskForm.assignedTo
@@ -122,7 +120,6 @@ export default function ProjectDetailsPage() {
   };
 
   const onDeleteTask = (taskId: string) => {
-    // currentProject is guaranteed to be defined here
     const updatedTasks = currentProject.tasks.filter(
       (task) => task.id !== taskId
     );
@@ -136,14 +133,13 @@ export default function ProjectDetailsPage() {
   };
 
   const handleDragEnd = (event: any) => {
-    // currentProject is guaranteed to be defined here
     const { active, over } = event;
     if (!over) return;
 
     const activeTask = active.data.current?.task;
-    if (!activeTask) return; // Ensure activeTask is defined
+    if (!activeTask) return;
 
-    let newStatus = activeTask.status; // Default to current status
+    let newStatus = activeTask.status;
 
     if (over.data.current?.type === "Task") {
       newStatus = over.data.current.task.status;
@@ -203,7 +199,6 @@ export default function ProjectDetailsPage() {
   };
 
   const handleProjectStatusChange = (newStatus: Project["status"]) => {
-    // currentProject is guaranteed to be defined here
     dispatch(
       updateProject({
         id: currentProject.id,

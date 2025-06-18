@@ -17,6 +17,52 @@ A modern, responsive project management dashboard built with **Next.js 14**, **T
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Dashboard Overview
+![Dashboard Overview](/screenshots/dashboard-overview.png)
+*Main dashboard with project statistics, charts, and key metrics*
+
+### 🌙 Dark Mode Interface
+![Dark Mode](/screenshots/dark-mode.png)
+*Complete dark theme with all components and navigation*
+
+### 📱 Mobile Responsive Design
+![Mobile View](/public/screenshots/responsive-dashboard.png)
+![](/public/screenshots/responsive-project.png)
+*Fully responsive design optimized for mobile devices*
+
+### 📋 Projects Management
+![Projects Page](/public/screenshots/project-light.png)
+![](/public/screenshots/project-dark.png)
+*Project listing with filtering, sorting, and management features*
+
+### 📊 Project Details & Tasks
+![Project Details](/public/screenshots/projectDetails-light.png)
+![](/public/screenshots/projectDetails-dark.png)
+*Detailed project view with task management and progress tracking*
+
+### 👥 Team Management
+![Teams Page](/public/screenshots/teams-light.png)
+![](/public/screenshots/teams-dark.png)
+*Team overview with member management and collaboration features*
+
+### ⚙️ Settings & Configuration
+![Settings Page](/public/screenshots/settings-light.png)
+![](/public/screenshots/settings-dark.png)
+*Application settings and user preferences*
+
+### 🔐 Authentication
+![Login Page](/public/screenshots/loginpage.png)
+*Secure login interface with modern design*
+
+### 📈 Analytics & Reports
+![Analytics Dashboard](/public/screenshots/dashboard-light.png)
+![](/public/screenshots/dashboard-dark.png)
+*Advanced analytics with interactive charts and data visualization*
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
@@ -55,7 +101,7 @@ npm run build
 npm start
 ```
 
-### 5. Environment Variables
+### 5. Environment Variables(optional if you are connecting to backend)
 Create a `.env.local` file for environment-specific configurations:
 ```env
 NEXT_PUBLIC_API_URL=your-api-url
@@ -174,17 +220,13 @@ import Sidebar from '@/components/layout/Sidebar';
 
 ### **Dashboard Page**
 ```tsx
-// src/app/dashboard/page.tsx
 export default function DashboardPage() {
-  // ...get stats and data
   return (
     <div className="space-y-8">
       <h1 className="text-4xl font-bold text-foreground">Dashboard Overview</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card title="Total Projects" value={stats.totalProjects} />
-        {/* ...other cards */}
       </div>
-      {/* ...charts and more */}
     </div>
   );
 }

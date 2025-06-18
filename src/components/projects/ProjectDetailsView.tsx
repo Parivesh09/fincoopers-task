@@ -15,7 +15,7 @@ interface ProjectDetailsViewProps {
   taskForm: TaskFormState;
   mockUsers: User[];
   editingTask: TaskFormState | null;
-  sensors: any; // Dnd-kit sensors
+  sensors: any;
   onProjectStatusChange: (status: Project["status"]) => void;
   onAddTask: (e: React.FormEvent) => void;
   onEditTask: (task: Task) => void;

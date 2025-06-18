@@ -36,25 +36,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.classList.remove('dark');
     }
     
-    // Update meta theme-color for mobile browsers
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute('content', theme === 'dark' ? '#0f172a' : '#ffffff');
     }
   };
 
-  // Set theme
   const setThemeMode = (theme: Theme) => {
     dispatch(setTheme(theme));
     applyTheme(theme);
     
-    // Save to localStorage
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', theme);
     }
   };
 
-  // Toggle theme
   const toggleTheme = () => {
     const newTheme = themeMode === 'light' ? 'dark' : 'light';
     setThemeMode(newTheme);
@@ -74,7 +70,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [dispatch]);
 
-  // Listen for system theme changes
   useEffect(() => {
     if (!mounted) return;
 
@@ -82,7 +77,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     const handleChange = () => {
       const systemTheme = getSystemTheme();
-      // Only apply system theme if no theme is saved in localStorage
       if (!localStorage.getItem('theme')) {
         dispatch(setTheme(systemTheme));
         applyTheme(systemTheme);
@@ -93,7 +87,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [mounted, dispatch]);
 
-  // Apply theme when themeMode changes
   useEffect(() => {
     if (mounted) {
       applyTheme(themeMode);

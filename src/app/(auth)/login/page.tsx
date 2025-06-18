@@ -1,21 +1,51 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '@/lib/store';
+import { setCurrentUser } from '@/lib/store';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const currentUser = useAppSelector((state) => state.app.currentUser);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push('/dashboard');
+    }
+  }, [currentUser, router]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Dummy login logic: redirect to dashboard
-    window.location.href = './dashboard/projects';
+    
+    if (email && password) {
+      const mockUser = {
+        id: '1',
+        name: 'John Doe',
+        email: email,
+        initials: 'JD',
+      };
+      
+      dispatch(setCurrentUser(mockUser));
+      router.push('/dashboard');
+    }
   };
+
+  if (currentUser) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <div className="bg-background p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-background p-8 rounded-lg shadow-lg w-full max-w-md border border-border">
         <h1 className="text-3xl font-bold text-center text-foreground mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
